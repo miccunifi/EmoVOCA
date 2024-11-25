@@ -1,4 +1,4 @@
-# EmoVOCA (WACV 202r)
+# EmoVOCA (WACV 2025)
 
 ### EmoVOCA: Speech-Driven Emotional 3D Talking Heads
 
