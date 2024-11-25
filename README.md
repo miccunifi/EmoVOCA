@@ -1,7 +1,6 @@
-# EmoVOCA
-# ScanTalk (ECCV 2024)
+# EmoVOCA (WACV 202r)
 
-### ScanTalk: 3D Talking Heads from Unregistered Scans
+### EmoVOCA: Speech-Driven Emotional 3D Talking Heads
 
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)]([https://arxiv.org/abs/2403.10942](https://arxiv.org/abs/2403.12886))
 [![Generic badge](https://img.shields.io/badge/Project%20Page-F76810)](https://fedenoce.github.io/emovoca/)
@@ -117,17 +116,14 @@ You can use `demo.py` to run a demo of ScanTalk, animating any 3D face that has 
 
 ## Authors
 * [**Federico Nocentini**](https://scholar.google.com/citations?user=EpQCpoUAAAAJ&hl=en)**\***
-* [**Thomas Besnier**](https://scholar.google.com/citations?user=fc1gZk4AAAAJ&hl=en)**\***
 * [**Claudio Ferrari**](https://scholar.google.com/citations?user=aael17YAAAAJ&hl=en)
-* [**Sylvain Arguillere**](http://math.univ-lyon1.fr/~arguillere/)
 * [**Stefano Berretti**](https://scholar.google.com/citations?user=3GPTAGQAAAAJ&hl=en)
-* [**Mohamed Daoudi**](https://scholar.google.com/citations?user=7UoD6McAAAAJ&hl=en)
 
 **\*** Equal contribution.
 
 ## Acknowledgements
 
-This work is supported by the ANR project Human4D (ANR-19-CE23-0020) and by the [IRP CNRS project GeoGen3DHuman](https://geogen3dhuman.univ-lille.fr). It was also partially supported by "Partenariato FAIR (Future Artificial Intelligence Research) - PE00000013, CUP J33C22002830006", funded by NextGenerationEU through the Italian MUR within the NRRP, project DL-MIG. 
+This work is  partially supported by "Partenariato FAIR (Future Artificial Intelligence Research) - PE00000013, CUP J33C22002830006", funded by NextGenerationEU through the Italian MUR within the NRRP, project DL-MIG. 
 Additionally, this work was partially funded by the ministerial decree n.352 of the 9th April 2022, NextGenerationEU through the Italian MUR within NRRP, and partially supported by Fédération de Recherche Mathématique des Hauts-de-France (FMHF, FR2037 du CNRS).
 
 ## LICENSE
