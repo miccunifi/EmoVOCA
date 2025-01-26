@@ -1,5 +1,5 @@
 import os
-os.environ['PYOPENGL_PLATFORM'] = 'osmesa'
+os.environ['PYOPENGL_PLATFORM'] = 'egl'
 
 import ES2D.s2d as models
 import ES2D.spiral_utils as spiral_utils
@@ -238,7 +238,7 @@ def generate_meshes_from_landmarks(landmarks, template_lands, template, referenc
     shapedata.n_features = 3
 
     with open(
-            '/mnt/diskone-first/TH/S2D/template/template/downsampling_matrices.pkl',
+            './template/template/downsampling_matrices.pkl',
             'rb') as fp:
         downsampling_matrices = pickle.load(fp)
 
@@ -315,16 +315,16 @@ def main():
     parser.add_argument("--feature_dim", type=int, default=32, help='64 for vocaset')
     parser.add_argument("--device", type=str, default="cpu")
     parser.add_argument("--num_layers", type=int, default=7, help='number of S2L layers')
-    parser.add_argument("--S2L", type=str, default='/ES2L/saves/es2l.tar', help='path to the S2L model')
-    parser.add_argument("--S2D", type=str, default='/ES2D/saves/s2d.tar', help='path to the S2D model')
-    parser.add_argument("--template_file", type=str, default="/mnt/diskone-first/TH/S2D/vocaset/templates.pkl", help='faces to animate')
+    parser.add_argument("--S2L", type=str, default='./ES2L/saves/es2l.tar', help='path to the S2L model')
+    parser.add_argument("--S2D", type=str, default='./ES2D/saves/s2d.tar', help='path to the S2D model')
+    parser.add_argument("--template_file", type=str, default="./Dataset/vocaset/templates.pkl", help='faces to animate')
     parser.add_argument("--template_name", type=str, default="FaceTalk_170809_00138_TA", help='face to animate')
-    parser.add_argument("--audio_path", type=str, default='/mnt/diskone-first/TH/Audios/photo.wav', help='audio to animate')
-    parser.add_argument("--save_path", type=str, default='/mnt/diskone-first/TH/Example_Afraid_Mid', help='path for results')
-    parser.add_argument("--flame_template", type=str, default="/mnt/diskone-first/TH/S2L/vocaset/flame_model/FLAME_sample.ply", help='template_path')
-    parser.add_argument("--video_name", type=str, default="Example_Afraid_Mid.mp4", help='name of the rendered video')
+    parser.add_argument("--audio_path", type=str, default='./Example/photo.wav', help='audio to animate')
+    parser.add_argument("--save_path", type=str, default='prediction', help='path for results')
+    parser.add_argument("--flame_template", type=str, default="./Dataset/vocaset/flame_model/FLAME_sample.ply", help='template_path')
+    parser.add_argument("--video_name", type=str, default="Example_Happy_photo.mp4", help='name of the rendered video')
     parser.add_argument("--fps", type=int, default=60, help='frames per second')
-    parser.add_argument("--Emotion", type=str, default='Afraid', help='Expression to animate')
+    parser.add_argument("--Emotion", type=str, default='Happy', help='Expression to animate')
     parser.add_argument("--Intensity", type=str, default='Mid', help='Intensity to animate')
 
     
