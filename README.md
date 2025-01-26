@@ -4,7 +4,7 @@
 
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)]([https://arxiv.org/abs/2403.10942](https://arxiv.org/abs/2403.12886))
 [![Generic badge](https://img.shields.io/badge/Project%20Page-F76810)](https://fedenoce.github.io/emovoca/)
-[![GitHub Stars](https://img.shields.io/github/stars/miccunifi/scantalk?style=social)](https://github.com/miccunifi/scantalk)
+[![GitHub Stars](https://img.shields.io/github/stars/miccunifi/scantalk?style=social)](https://github.com/miccunifi/emovoca)
 
 
 This is the **official repository** of the [**WACV 2025 paper**](https://fedenoce.github.io/emovoca/) "*EmoVOCA: Speech-Driven Emotional 3D Talking Heads*" by Federico Nocentini, Claudio Ferrari, Stefano Berretti.
