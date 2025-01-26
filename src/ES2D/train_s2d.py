@@ -9,7 +9,7 @@ import argparse
 from tqdm import tqdm
 import random
 from data_loader import get_dataloaders
-from s2d_spiral import SpiralDecoder
+from es2d import SpiralDecoder
 from sklearn.metrics.pairwise import euclidean_distances
 import shape_data
 import spiral_utils
