@@ -37,14 +37,14 @@ def generate_emovoca(args, label_dict, data_dict):
 
     shapedata = shape_data.ShapeData(
         nVal=100,
-        reference_mesh_file='/mnt/diskone-second/D2D/template/flame_model/FLAME_sample.ply',
+        reference_mesh_file='../template/flame_model/FLAME_sample.ply',
         normalization=False,
         meshpackage=meshpackage, load_flag=False)
 
     shapedata.n_vertex = 5023
     shapedata.n_features = 3
 
-    with open('/mnt/diskone-second/D2D/template/template/downsampling_matrices.pkl', 'rb') as fp:
+    with open('../template/template/downsampling_matrices.pkl', 'rb') as fp:
         downsampling_matrices = pickle.load(fp)
 
     M_verts_faces = downsampling_matrices['M_verts_faces']
@@ -107,7 +107,7 @@ def generate_emovoca(args, label_dict, data_dict):
     model.load_state_dict(checkpoint['autoencoder_state_dict'])
 
 
-    with open('/mnt/diskone-first/TH/S2L/vocaset/templates.pkl', 'rb') as fin:
+    with open('../Dataset/vocaset/templates.pkl', 'rb') as fin:
             templates = pickle.load(fin, encoding='latin1')
 
     for file in os.listdir(neutral_sequences_path):
@@ -136,16 +136,16 @@ def generate_emovoca(args, label_dict, data_dict):
 def main():
     # Argument parsing
     parser = argparse.ArgumentParser(description="EmoVOCA generator")
-    parser.add_argument('--neutral_sequences_path', type=str, default='/.vocaset/vertices_npy', help="Path to neutral sequences.")
-    parser.add_argument('--audio_path', type=str, default='./vocaset/wav', help="Path to audio files.")
-    parser.add_argument('--model_path', type=str, default='/mnt/diskone-first/TH/EmoVOCA_generator/saves', help="Path to pre-trained model.")
-    parser.add_argument('--conditions_path', type=str, default='/Conditions', help="Path to conditions.")
-    parser.add_argument('--coma_templates', type=str, default='Florence4D', help="Path to Florence COMA templates.")
+    parser.add_argument('--neutral_sequences_path', type=str, default='../Dataset/vocaset/vertices_npy', help="Path to neutral sequences.")
+    parser.add_argument('--audio_path', type=str, default='../Dataset/vocaset/wav', help="Path to audio files.")
+    parser.add_argument('--model_path', type=str, default='./saves/emovoca_generator.tar', help="Path to pre-trained model.")
+    parser.add_argument('--conditions_path', type=str, default='./New_conditions', help="Path to conditions.")
+    parser.add_argument('--coma_templates', type=str, default='../Dataset/Florence4D', help="Path to Florence COMA templates.")
     parser.add_argument('--intensities', type=int, nargs='+', default=[1, 2, 3], help="List of intensities.")
-    parser.add_argument('--seq_path', type=str, default='EmoVOCA/sequences', help="Path to save sequences.")
-    parser.add_argument('--label_path', type=str, default='EmoVOCA/label', help="Path to save labels.")
-    parser.add_argument('--intensity_path', type=str, default='EmoVOCA/intensity', help="Path to save intensities.")
-    parser.add_argument('--new_audio_path', type=str, default='EmoVOCA/wav', help="Path to save audio.")
+    parser.add_argument('--seq_path', type=str, default='../Dataset/New_EmoVOCA/sequences', help="Path to save sequences.")
+    parser.add_argument('--label_path', type=str, default='../Dataset/New_EmoVOCA/label', help="Path to save labels.")
+    parser.add_argument('--intensity_path', type=str, default='../Dataset/New_EmoVOCA/intensity', help="Path to save intensities.")
+    parser.add_argument('--new_audio_path', type=str, default='../Dataset/New_EmoVOCA/wav', help="Path to save audio.")
 
     args = parser.parse_args()
     
