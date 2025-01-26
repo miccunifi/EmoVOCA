@@ -95,7 +95,7 @@ Ensure you have the correct version of PyTorch and torchvision. If you need a di
 <details>
 <summary><h2>EmoVOCA</h2></summary> 
 
-For training and testing EmoVOCA DE-SD, we used three open-source datasets for 3D facial data: [**vocaset**](https://voca.is.tue.mpg.de/) and [**Florence 4D Facial Expression Dataset**](https://www.micc.unifi.it/resources/datasets/florence-4d-facial-expression/). Please note that you must obtain authorization to use both datasets.
+For training and testing EmoVOCA DE-SD, we used two open-source datasets for 3D facial data: [**vocaset**](https://voca.is.tue.mpg.de/) and [**Florence 4D Facial Expression Dataset**](https://www.micc.unifi.it/resources/datasets/florence-4d-facial-expression/). Please note that you must obtain authorization to use both datasets.
 
 To generate meshes with EmoVOCA, follow these steps:  
 1. Download the [**vocaset dataset**](https://voca.is.tue.mpg.de/) and place it in the `Dataset` folder located in the main directory.  
