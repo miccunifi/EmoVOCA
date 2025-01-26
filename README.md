@@ -114,7 +114,7 @@ We are releasing three models:
 
 1. **`emovoca_generator.tar`**: The DE-SD framework used to generate EmoVOCA.  
 2. **`es2l.tar`**: The ES2L framework trained on EmoVOCA.  
-3. **`es2s.tar`**: Another ES2L framework trained on EmoVOCA.  
+3. **`es2d.tar`**: The ES2D framework trained on EmoVOCA.  
 
 All models are available for download [**here**](https://drive.google.com/drive/folders/1Ff1wjxYNXdlxm_CDTbjWPXrAy9H0lusS?usp=sharing). After downloading, place the `saves` folder inside each model's directory to ensure proper setup.
 
