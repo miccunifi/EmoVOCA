@@ -59,7 +59,7 @@ def train(args):
     shapedata.n_features = 3
 
 
-    with open('/mnt/diskone-first/TH/S2D/template/template/downsampling_matrices.pkl', 'rb') as fp:
+    with open('../template/template/downsampling_matrices.pkl', 'rb') as fp:
         downsampling_matrices = pickle.load(fp)
 
     M_verts_faces = downsampling_matrices['M_verts_faces']
@@ -117,22 +117,13 @@ def train(args):
                                       spirals=tspirals,
                                       D=tD, U=tU, device=device).to(device)
     print("model parameters: ", count_parameters(s2d))
-    
-    starting_epoch = 0
-    if args.load_model == True:
-        checkpoint = torch.load(args.model_path, map_location=device)
-        s2d.load_state_dict(checkpoint['autoencoder_state_dict'])
-        starting_epoch = checkpoint['epoch'] + 1
-        print(starting_epoch)
 
-       
-
-    loss_weights = np.load('/mnt/diskone-first/TH/S2D/template/template/Normalized_d_weights.npy', allow_pickle=True)
+    loss_weights = np.load('../template/template/Normalized_d_weights.npy', allow_pickle=True)
     loss_weights = torch.from_numpy(loss_weights).float().to(device)[:-1]
     
     optim = torch.optim.Adam(s2d.parameters(), lr=args.lr)
     
-    for epoch in range(starting_epoch, args.epochs + 1):
+    for epoch in range(args.epochs + 1):
         s2d.train()
         tloss = 0
         
@@ -177,24 +168,22 @@ def train(args):
         torch.save({'epoch': epoch,
             'autoencoder_state_dict': s2d.state_dict(),
             'optimizer_state_dict': optim.state_dict(),
-            }, os.path.join(args.result_dir, 'es2l.pth.tar'))
+            }, os.path.join(args.result_dir, 'es2l.tar'))
     
         
 def main():
-    parser = argparse.ArgumentParser(description='Spriral Convolution ++ D2D: Dense to Dense Encoder-Decoder')
+    parser = argparse.ArgumentParser(description='Spriral Convolution D2D: Dense to Dense Encoder-Decoder')
     parser.add_argument("--lr", type=float, default=0.0001, help='learning rate')
     parser.add_argument("--epochs", type=int, default=300, help='number of epochs')
     parser.add_argument("--mb", type=int, default=64, help='number of epochs')
-    parser.add_argument("--result_dir", type=str, default="S2D/saves")
-    parser.add_argument("--device", type=str, default="cpu")
-    parser.add_argument("--reference_mesh_file", type=str, default='/mnt/diskone-first/TH/S2D/template/flame_model/FLAME_sample.ply', help='path of the template')
+    parser.add_argument("--result_dir", type=str, default="./saves")
+    parser.add_argument("--device", type=str, default="cuda")
+    parser.add_argument("--reference_mesh_file", type=str, default='../template/flame_model/FLAME_sample.ply', help='path of the template')
     parser.add_argument("--root_dir", type=str, default='')
-    parser.add_argument("--voca_transform", type=str, default='/home/federico/Scrivania/ST/ScanTalk/template/template/transform.pkl')
-    parser.add_argument("--vertices_path_evoca", type=str, default="/mnt/diskone-first/New_Dataset2/sequences", help='path of the ground truth')
-    parser.add_argument("--landmarks_path_evoca", type=str, default="/mnt/diskone-first/New_Dataset2/landmarks_sequences", help='path of the ground truth')
-    parser.add_argument("--template_file_voca", type=str, default="/mnt/diskone-first/TH/S2L/vocaset/templates.pkl", help='template_file')
-    parser.add_argument("--load_model", type=bool, default=True)
-    parser.add_argument("--model_path", type=str, default='/mnt/diskone-first/TH/New_S2D/saves/s2d_Spiral_Naima_Loss_New_Training_More_Emotions.pth.tar')
+    parser.add_argument("--voca_transform", type=str, default='../template/template/transform.pkl')
+    parser.add_argument("--vertices_path_evoca", type=str, default="../Dataset/EmoVOCA/sequences", help='path of the ground truth')
+    parser.add_argument("--landmarks_path_evoca", type=str, default="../Dataset/EmoVOCA/landmarks_sequences", help='path of the ground truth')
+    parser.add_argument("--template_file_voca", type=str, default="../Dataset/vocaset/templates.pkl", help='template_file')
     parser.add_argument("--train_subjects", type=str, default="FaceTalk_170728_03272_TA FaceTalk_170904_00128_TA FaceTalk_170725_00137_TA FaceTalk_170915_00223_TA FaceTalk_170811_03274_TA FaceTalk_170913_03279_TA FaceTalk_170904_03276_TA FaceTalk_170912_03278_TA")
     parser.add_argument("--val_subjects", type=str, default="FaceTalk_170811_03275_TA FaceTalk_170908_03277_TA")
     parser.add_argument("--test_subjects", type=str, default="FaceTalk_170809_00138_TA FaceTalk_170731_00024_TA")
