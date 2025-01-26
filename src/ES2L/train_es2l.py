@@ -100,7 +100,7 @@ def train(args):
         torch.save({'epoch': epoch,
             'autoencoder_state_dict': es2l.state_dict(),
             'optimizer_state_dict': optim.state_dict(),
-            }, os.path.join(args.result_dir, 'es2l.pth.tar'))
+            }, os.path.join(args.result_dir, 'es2l.tar'))
     
         
 def main():
@@ -110,16 +110,14 @@ def main():
     parser.add_argument("--landmarks_dim", type=int, default=68*3, help='number of landmarks - 68*3')
     parser.add_argument("--audio_feature_dim", type=int, default=64*3, help='768 for wav2vec')
     parser.add_argument("--feature_dim", type=int, default=32, help='64')
-    parser.add_argument("--wav_path", type=str, default="EmoVOCA/wav", help='path of the audio signals')
-    parser.add_argument("--landmarks_path", type=str, default="EmoVOCA/landmarks_sequences", help='path of the ground truth')
-    parser.add_argument("--intensity_path", type=str, default="EmoVOCA/intensity", help='path of the ground truth')
-    parser.add_argument("--label_path", type=str, default="EmoVOCA/label", help='path of the ground truth')
-    parser.add_argument("--result_dir", type=str, default="ES2L/saves")
+    parser.add_argument("--wav_path", type=str, default="../Dataset/EmoVOCA/wav", help='path of the audio signals')
+    parser.add_argument("--landmarks_path", type=str, default="../Dataset/EmoVOCA/landmarks_sequences", help='path of the ground truth')
+    parser.add_argument("--intensity_path", type=str, default="../Dataset/EmoVOCA/intensity", help='path of the ground truth')
+    parser.add_argument("--label_path", type=str, default="../Dataset/EmoVOCA/label", help='path of the ground truth')
+    parser.add_argument("--result_dir", type=str, default="./saves")
     parser.add_argument("--device", type=str, default="cuda:0")
-    parser.add_argument("--template_file_voca", type=str, default="/mnt/diskone-first/TH/S2L/vocaset/templates.pkl", help='template_file')
+    parser.add_argument("--template_file_voca", type=str, default="../Dataset/vocaset/templates.pkl", help='template_file')
     parser.add_argument("--num_layers", type=int, default=7, help='number of S2L layers')
-    parser.add_argument("--load_model", type=bool, default=False)
-    parser.add_argument("--model_path", type=str, default='/mnt/diskone-first/TH/New_S2L/saves/e-s2l_new_training_more_emotions.pth.tar')
     parser.add_argument("--train_subjects", type=str, default="FaceTalk_170728_03272_TA FaceTalk_170904_00128_TA FaceTalk_170725_00137_TA FaceTalk_170915_00223_TA FaceTalk_170811_03274_TA FaceTalk_170913_03279_TA FaceTalk_170904_03276_TA FaceTalk_170912_03278_TA")
     parser.add_argument("--val_subjects", type=str, default="FaceTalk_170811_03275_TA FaceTalk_170908_03277_TA")
     parser.add_argument("--test_subjects", type=str, default="FaceTalk_170809_00138_TA FaceTalk_170731_00024_TA")
