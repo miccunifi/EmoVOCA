@@ -9,7 +9,7 @@
 
 This is the **official repository** of the [**WACV 2025 paper**](https://fedenoce.github.io/emovoca/) "*EmoVOCA: Speech-Driven Emotional 3D Talking Heads*" by Federico Nocentini, Claudio Ferrari, Stefano Berretti.
 
-🔥🔥 **[2024/09/10] Our code is now public available! Feel free to explore, use, and contribute!** 
+🔥🔥 **[2025/01/25] Our code is now public available! Feel free to explore, use, and contribute!** 
 
 
 ## Overview
