@@ -37,7 +37,7 @@ combined by concatenating the encoded latent vectors, and the decoder outputs a 
 ```
 
 <details>
-<summary><h2>ScanTalk Installation Guide</h2></summary> 
+<summary><h2>EmoVOCA Installation Guide</h2></summary> 
 
 This guide provides step-by-step instructions on how to set up the ScanTalk environment and install all necessary dependencies. The codebase has been tested on **Ubuntu 20.04.2 LTS** with **Python 3.8**.
 
@@ -93,25 +93,41 @@ Ensure you have the correct version of PyTorch and torchvision. If you need a di
 </details>
 
 <details>
-<summary><h2>Dataset Installation Guide</h2></summary> 
+<summary><h2>EmoVOCA</h2></summary> 
 
+For training and testing EmoVOCA DE-SD, we used three open-source datasets for 3D facial data: [**vocaset**](https://voca.is.tue.mpg.de/) and [**Florence 4D Facial Expression Dataset**](https://www.micc.unifi.it/resources/datasets/florence-4d-facial-expression/). Please note that you must obtain authorization to use both datasets.
 
-For training and testing ScanTalk, we utilized three open-source datasets for 3D Talking Heads: [**vocaset**](https://voca.is.tue.mpg.de/), [**BIWI**](https://paperswithcode.com/dataset/biwi-3d-audiovisual-corpus-of-affective), and [**Multiface**](https://github.com/facebookresearch/multiface). The elaborated and aligned datasets, all standardized to the vocaset format, used for both training and testing ScanTalk, can be found [**here**](https://drive.google.com/drive/folders/1KetNagXa9jcgYwnDUAJxDx5UJMx9yLL2?usp=sharing). After downloading, place the `Dataset` folder in the main directory.
+To generate meshes with EmoVOCA, follow these steps:  
+1. Download the [**vocaset dataset**](https://voca.is.tue.mpg.de/) and place it in the `Dataset` folder located in the main directory.  
+2. The meshes used for conditioning vocaset have already been added to the `EmoVOCA_generator/New_Conditions` folder. For additional data, download the [**Florence 4D dataset**](https://www.micc.unifi.it/resources/datasets/florence-4d-facial-expression/).  
+
+Pre-generated EmoVOCAv2 sequences are available [**here**](https://drive.google.com/drive/folders/1xcABG8Q3dT_O97QD6iM_IcAO14PKDcDM?usp=sharing). To use them:  
+1. Download the folder and place it inside the `Dataset` folder in the main directory.  
+2. Extract all the files to ensure proper access.  
 
 </details>
 
 <details>
 <summary><h2>Pretrained Models Installation</h2></summary> 
 
-We are releasing two versions of ScanTalk: one named `scantalk_mse.pth.tar`, trained using Mean Square Error Loss, and another named `scantalk_mse_masked_velocity.pth.tar`, which is trained with a combination of multiple loss functions. Both models are available for download [**here**](https://drive.google.com/drive/folders/1iH4ugUI_JoGiejZj3ENltxSIpUnFY4zl?usp=sharing). After downloading, place the `results` folder within the `src` directory.
+We are releasing three models:  
+
+1. **`emovoca_generator.tar`**: The DE-SD framework used to generate EmoVOCA.  
+2. **`es2l.tar`**: The ES2L framework trained on EmoVOCA.  
+3. **`es2s.tar`**: Another ES2L framework trained on EmoVOCA.  
+
+All models are available for download [**here**](https://drive.google.com/drive/folders/1Ff1wjxYNXdlxm_CDTbjWPXrAy9H0lusS?usp=sharing). After downloading, place the `saves` folder inside each model's directory to ensure proper setup.
 
 </details>
 <details>
-<summary><h2>ScanTalk Training, Testing and Demo</h2></summary> 
+<summary><h2>Training, Testing and Demo</h2></summary> 
 
-The files `scantalk_train.py` and `scantalk_test.py` are used for training and testing, respectively. `scantalk_test.py` generates a directory containing all the ScanTalk predictions for each test set in the datasets. After obtaining the predictions, `compute_metrics.py` is used to calculate evaluation metrics by comparing the ground truth with the model's predictions.
+Inside the model folders `ES2L` and `ES2D`, you will find both the model definitions and the training code for each component.  
 
-You can use `demo.py` to run a demo of ScanTalk, animating any 3D face that has been aligned with the training set. Both audio and 3D face for the demo are in the  `src/examples` folder.
+In the `EmoVOCA_generator` folder, you will find the code required to generate any version of EmoVOCA.  
+
+Within the main directory, there is a file named `demo.py`, which can be used to render outputs based on an emotion label, intensity value, an audio file, and a 3D face template. Additionally, example files for generation are provided in the `example` folder located in the main directory.
+
 </details>
 
 ## Authors
