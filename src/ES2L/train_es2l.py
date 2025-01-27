@@ -89,7 +89,7 @@ def train(args):
                     template = sample['template_landmarks'].to(device)
                     label = sample['label'].to(device)
                     intensity = sample['intensity'].to(device)
-                    landmarks_pred = se2l.forward(audio, landmarks, template, label, intensity)
+                    landmarks_pred = es2l.forward(audio, landmarks, template, label, intensity)
                     loss = criterion_train(landmarks_pred, landmarks)
                     vloss += loss.item()
 
