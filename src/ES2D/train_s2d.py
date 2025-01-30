@@ -168,7 +168,7 @@ def train(args):
         torch.save({'epoch': epoch,
             'autoencoder_state_dict': s2d.state_dict(),
             'optimizer_state_dict': optim.state_dict(),
-            }, os.path.join(args.result_dir, 'es2l.tar'))
+            }, os.path.join(args.result_dir, 'es2d.tar'))
     
         
 def main():
