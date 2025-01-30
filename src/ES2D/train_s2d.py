@@ -116,12 +116,12 @@ def train(args):
                                       spiral_sizes=spiral_sizes,
                                       spirals=tspirals,
                                       D=tD, U=tU, device=device).to(device)
-    print("model parameters: ", count_parameters(s2d))
+    print("model parameters: ", count_parameters(es2d))
 
     loss_weights = np.load('../template/template/Normalized_d_weights.npy', allow_pickle=True)
     loss_weights = torch.from_numpy(loss_weights).float().to(device)[:-1]
     
-    optim = torch.optim.Adam(s2d.parameters(), lr=args.lr)
+    optim = torch.optim.Adam(es2d.parameters(), lr=args.lr)
     
     for epoch in range(args.epochs + 1):
         es2d.train()
