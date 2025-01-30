@@ -1,7 +1,7 @@
 import os
 os.environ['PYOPENGL_PLATFORM'] = 'egl'
 
-import ES2D.s2d as models
+import ES2D.es2d as models
 import ES2D.spiral_utils as spiral_utils
 import ES2D.shape_data as shape_data
 import argparse
