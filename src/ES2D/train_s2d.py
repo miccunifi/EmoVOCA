@@ -108,7 +108,7 @@ def train(args):
     dataset = get_dataloaders(args)
 
 
-    s2d = SpiralDecoder(filters_enc=filter_sizes_enc,
+    es2d = SpiralDecoder(filters_enc=filter_sizes_enc,
                                       filters_dec=filter_sizes_dec,
                                       latent_size=nz,
                                       sizes=sizes,
@@ -124,7 +124,7 @@ def train(args):
     optim = torch.optim.Adam(s2d.parameters(), lr=args.lr)
     
     for epoch in range(args.epochs + 1):
-        s2d.train()
+        es2d.train()
         tloss = 0
         
         pbar_train = tqdm(enumerate(dataset["train"]), total=len(dataset["train"]))
@@ -135,7 +135,7 @@ def train(args):
             vertices_land = sample['land_vertices'].to(device)
             template_land = sample['land_template'].to(device)
 
-            disp_pred, vertices_pred = s2d.forward(vertices_land - template_land, template)
+            disp_pred, vertices_pred = es2d.forward(vertices_land - template_land, template)
             loss = loss_weighted(disp_pred, vertices-template, vertices_pred, vertices, loss_weights) 
 
             loss.backward()
@@ -147,7 +147,7 @@ def train(args):
         
 
         if epoch % 20 == 0 or epoch == args.epochs:
-            s2d.eval()
+            es2d.eval()
             with torch.no_grad():
                 vloss = 0
                 pbar_val = tqdm(enumerate(dataset["valid"]), total=len(dataset["valid"]))
@@ -157,7 +157,7 @@ def train(args):
                     vertices_land = sample['land_vertices'].to(device)
                     template_land = sample['land_template'].to(device)
 
-                    disp_pred, vertices_pred = s2d.forward(vertices_land - template_land, template)
+                    disp_pred, vertices_pred = es2d.forward(vertices_land - template_land, template)
                     loss = loss_weighted(disp_pred, vertices-template, vertices_pred, vertices, loss_weights) 
                     vloss += loss.item()
 
@@ -166,7 +166,7 @@ def train(args):
                 
                
         torch.save({'epoch': epoch,
-            'autoencoder_state_dict': s2d.state_dict(),
+            'autoencoder_state_dict': es2d.state_dict(),
             'optimizer_state_dict': optim.state_dict(),
             }, os.path.join(args.result_dir, 'es2d.tar'))
     
