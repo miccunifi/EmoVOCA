@@ -9,7 +9,7 @@ import pickle
 from torch.utils.data import DataLoader
 from sklearn.metrics.pairwise import euclidean_distances
 import torch
-import Get_landmarks
+import ES2L.es2l import Get_landmarks
 from ES2L.es2l import EmotionalSpeech2Land
 from transformers import Wav2Vec2Processor
 import time
