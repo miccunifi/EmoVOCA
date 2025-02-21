@@ -316,7 +316,7 @@ def main():
     parser.add_argument("--device", type=str, default="cpu")
     parser.add_argument("--num_layers", type=int, default=7, help='number of S2L layers')
     parser.add_argument("--S2L", type=str, default='./ES2L/saves/es2l.tar', help='path to the S2L model')
-    parser.add_argument("--S2D", type=str, default='./ES2D/saves/s2d.tar', help='path to the S2D model')
+    parser.add_argument("--S2D", type=str, default='./ES2D/saves/es2d.tar', help='path to the S2D model')
     parser.add_argument("--template_file", type=str, default="./Dataset/vocaset/templates.pkl", help='faces to animate')
     parser.add_argument("--template_name", type=str, default="FaceTalk_170809_00138_TA", help='face to animate')
     parser.add_argument("--audio_path", type=str, default='./Example/photo.wav', help='audio to animate')
