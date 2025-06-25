@@ -28,7 +28,7 @@ def generate_emovoca(args, label_dict, data_dict):
     filter_sizes_dec = [[128, 64, 32, 32, 16], [[], [], [], [], 3]]
     ds_factors = [4, 4, 4, 4]
     reference_points = [[3567, 4051, 4597]]
-    latent_size = 16
+    latent_size = 256
     step_sizes = [2, 2, 1, 1, 1]
     dilation = [2, 2, 1, 1, 1]
     device = 'cpu'
