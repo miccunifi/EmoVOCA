@@ -48,8 +48,6 @@ def read_data(args):
     with open(template_file, 'rb') as fin:
         templates = pickle.load(fin, encoding='latin1')
             
-    k=0
-
     for r, ds, fs in os.walk(vertices_path_evoca):
         for f in tqdm(fs):
             if f.endswith("npy"):
@@ -68,13 +66,8 @@ def read_data(args):
                     data[key]["template"] = temp
                     data[key]["land_template"] = landmarks_temp
                     data[key]["land_vertices"] = landmarks[i].reshape(-1)
-                    
-                
-                k += 1
-                if k > 1500:
-                    break
-                        
 
+                    
 
     subjects_dict = {}
     subjects_dict["train"] = [i for i in args.train_subjects.split(" ")]
